@@ -1,0 +1,77 @@
+# ---------------------------
+# Python CLI Calculator App
+# Author: [Your Name]
+# Description:
+#   A simple command-line calculator that supports:
+#   - Addition
+#   - Subtraction
+#   - Multiplication
+#   - Division
+# ---------------------------
+
+# Define functions for each operation
+def add(x, y):
+    """Return the sum of x and y"""
+    return x + y
+
+def subtract(x, y):
+    """Return the difference between x and y"""
+    return x - y
+
+def multiply(x, y):
+    """Return the product of x and y"""
+    return x * y
+
+def divide(x, y):
+    """Return the quotient of x and y; handle division by zero"""
+    if y == 0:
+        return "Error! Cannot divide by zero."
+    return x / y
+
+# Main calculator function
+def calculator():
+    print("Welcome to Python Calculator 🧮")
+    print("Select operation:")
+    print("1. Add (+)")
+    print("2. Subtract (-)")
+    print("3. Multiply (*)")
+    print("4. Divide (/)")
+    
+    while True:
+        # Take the user's choice
+        choice = input("Enter choice (1/2/3/4): ")
+
+        # Check if input is a valid choice
+        if choice in ('1', '2', '3', '4'):
+            try:
+                # Take numeric input from the user
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+            except ValueError:
+                # Handle non-numeric input
+                print("Invalid input! Please enter numeric values.")
+                continue
+
+            # Perform the operation based on user's choice
+            if choice == '1':
+                print(f"Result: {num1} + {num2} = {add(num1, num2)}")
+            elif choice == '2':
+                print(f"Result: {num1} - {num2} = {subtract(num1, num2)}")
+            elif choice == '3':
+                print(f"Result: {num1} * {num2} = {multiply(num1, num2)}")
+            elif choice == '4':
+                print(f"Result: {num1} / {num2} = {divide(num1, num2)}")
+
+        else:
+            # If input choice is invalid
+            print("Invalid choice. Please select from 1 to 4.")
+
+        # Ask user if they want to perform another calculation
+        next_calc = input("Do you want to perform another calculation? (yes/no): ").lower()
+        if next_calc != 'yes':
+            print("Thank you for using the calculator! 👋")
+            break
+
+# Run the calculator when the script is executed
+if __name__ == "__main__":
+    calculator()
